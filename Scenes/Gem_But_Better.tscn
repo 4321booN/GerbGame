@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/Sound/FX/166184__drminky__retro-coin-collect.wav" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/Scripts/Gem_But_Better.gd" type="Script" id=2]
+[ext_resource path="res://Art/Textures/World/Gem_But_Better.png" type="Texture" id=3]
+[ext_resource path="res://Art/Textures/Particles/Blue_Sparkle_Small.png" type="Texture" id=4]
+[ext_resource path="res://Art/Textures/Particles/Blue_Sparkle_Large.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Collect_Bounce"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("GemSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3.72529e-09, 3.72529e-09 ), Vector2( 0, -16 ), Vector2( 0, -32 ), Vector2( 0, -24 ), Vector2( 0, -8 ), Vector2( 0, -8 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("GemSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[node name="GemButBetter1" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="GemSprite" type="Sprite" parent="."]
+scale = Vector2( 7.98828, 7.98828 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Collect_Bounce = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -16, -24, -8, -24, -8, -32, 8, -32, 8, -24, 16, -24, 16, 24, 8, 24, 8, 32, -8, 32, -8, 24, -16, 24 )
+
+[node name="GemCollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = 4.483
+pitch_scale = 0.59
+
+[node name="Large" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -8 )
+amount = 3
+lifetime = 2.0
+lifetime_randomness = 0.01
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 19.18
+direction = Vector2( 90, 90 )
+gravity = Vector2( 0, 3 )
+
+[node name="Small" type="CPUParticles2D" parent="."]
+amount = 6
+lifetime = 2.0
+lifetime_randomness = 0.01
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 36.47
+direction = Vector2( 90, 90 )
+gravity = Vector2( 0, 5 )
+
+[connection signal="body_entered" from="." to="." method="_on_GemButBetter1_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

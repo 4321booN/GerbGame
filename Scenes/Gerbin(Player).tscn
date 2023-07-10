@@ -1,0 +1,143 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Art/Textures/Player/Gerbin(Player)SpriteFrames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scenes/Scripts/Gerbin(Player).gd" type="Script" id=2]
+[ext_resource path="res://Art/Textures/Player/Spells/BeamStart.png" type="Texture" id=3]
+[ext_resource path="res://Art/Textures/Player/Spells/Beam.png" type="Texture" id=4]
+[ext_resource path="res://Art/Textures/Player/Spells/Heal_Spell.png" type="Texture" id=5]
+[ext_resource path="res://Art/Textures/Player/Spells/Staff.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Scripts/Staff.gd" type="Script" id=7]
+[ext_resource path="res://Art/Sound/FX/386633__jalastram__sfx_jump_22.wav" type="AudioStream" id=8]
+[ext_resource path="res://Art/Sound/FX/506588__mrthenoronha__kill-enemy-8-bit.wav" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 32 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Heal Spell"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealAura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "HealAura Hide"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealAura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("HealAura:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Blast",
+"speed": 5.0
+} ]
+
+[node name="Gerbin(Player)" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="HealAura" type="Sprite" parent="."]
+position = Vector2( 0, 1.90735e-06 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 5 )
+
+[node name="PlayerSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 8, 8 )
+frames = ExtResource( 1 )
+animation = "HoldStaff"
+playing = true
+
+[node name="LadderChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderChecker"]
+shape = SubResource( 1 )
+
+[node name="PlayerHitboxHead" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -24 )
+scale = Vector2( 0.96875, 0.96875 )
+polygon = PoolVector2Array( -16.5161, 3.8147e-06, -13.4194, -5.16129, -8.25807, -7.22581, 8.25807, -7.22581, 13.4194, -5.16129, 16.5161, 3.8147e-06, 16.5161, 16.5161, 16.5161, 44.3871, 13.4194, 50.5807, 8.25807, 56.7742, 0, 57.8065, -8.25807, 56.7742, -13.4194, 50.5807, -16.5161, 44.3871, -16.5161, 16.5161 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+pitch_scale = 0.84
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -30.666
+pitch_scale = 1.07
+
+[node name="GameoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -6.653
+pitch_scale = 1.07
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Heal Spell" = SubResource( 2 )
+"anims/HealAura Hide" = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Staff" type="Node2D" parent="."]
+position = Vector2( 24, 12 )
+script = ExtResource( 7 )
+
+[node name="StaffSprite" type="AnimatedSprite" parent="Staff"]
+position = Vector2( 8, -12 )
+scale = Vector2( 8, 8 )
+frames = SubResource( 5 )
+animation = "Blast"
+
+[node name="Begin" type="Sprite" parent="Staff/StaffSprite"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 3 )
+
+[node name="Beam" type="Sprite" parent="Staff/StaffSprite/Begin"]
+position = Vector2( 0, -2 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 12.5, 4 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Staff"]
+position = Vector2( 8, -28 )
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 16
+
+[connection signal="body_entered" from="LadderChecker" to="." method="_on_LadderChecker_body_entered"]
+[connection signal="body_exited" from="LadderChecker" to="." method="_on_LadderChecker_body_exited"]

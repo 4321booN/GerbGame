@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Thixel.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Scripts/Main-TitleMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Button-Hovered-Focused.tres" type="StyleBox" id=3]
+[ext_resource path="res://Scenes/Button-Normal-Pressed-Disabled.tres" type="StyleBox" id=4]
+[ext_resource path="res://Art/Fonts/Roboto/Roboto-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/ThixelMini.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scenes/ThixelMedium.tres" type="DynamicFont" id=7]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.25098, 0.231373, 0.47451, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 5 )
+
+[node name="Main-TitleMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.203922, 0.160784, 0.294118, 1 )
+
+[node name="TtileBackground" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -332.0
+margin_top = 8.0
+margin_right = 332.0
+margin_bottom = 120.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Title" type="Label" parent="Background/TtileBackground"]
+margin_left = -148.0
+margin_top = 4.0
+margin_right = 812.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "GerbGame"
+align = 1
+
+[node name="Version" type="Label" parent="Background/TtileBackground"]
+anchor_left = -0.023
+anchor_top = 0.071
+anchor_right = -0.023
+anchor_bottom = 0.071
+margin_left = -92.728
+margin_top = 0.0479999
+margin_right = 0.272001
+margin_bottom = 38.048
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "V1.7.0"
+
+[node name="Start" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -336.0
+margin_top = -58.0
+margin_right = 336.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 9 )
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "Start"
+
+[node name="Demo" type="Button" parent="Start"]
+anchor_left = 0.736
+anchor_top = 0.293
+anchor_right = 0.736
+anchor_bottom = 0.293
+margin_left = -6.59204
+margin_top = -91.504
+margin_right = 185.408
+margin_bottom = -27.504
+rect_min_size = Vector2( 0, 9 )
+rect_rotation = 9.5809
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "Demo!"
+
+[node name="Instructions" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.64
+anchor_right = 0.5
+anchor_bottom = 0.64
+margin_left = -400.0
+margin_top = -56.0
+margin_right = 392.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Instructions"
+align = 2
+
+[node name="NoticeButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.88
+anchor_right = 0.5
+anchor_bottom = 0.88
+margin_left = -336.0
+margin_top = -56.0001
+margin_right = 336.0
+margin_bottom = 71.9999
+rect_min_size = Vector2( 0, 9 )
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "Notice"
+
+[node name="Notice" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.88
+anchor_right = 0.5
+anchor_bottom = 0.88
+margin_left = -240.0
+margin_top = -56.0001
+margin_right = 248.0
+margin_bottom = 71.9999
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "*Notice* Game is best played in
+fullscreen, and you will need it
+to read all the instructions."
+
+[node name="x" type="Button" parent="Notice"]
+anchor_left = 1.004
+anchor_right = 1.004
+margin_left = -9.95203
+margin_top = -16.0
+margin_right = 10.048
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 9 )
+hint_tooltip = "Close notice"
+custom_colors/font_color = Color( 0.301961, 0.231373, 0.376471, 1 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "x"
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Start/Demo" to="." method="_on_Demo_pressed"]
+[connection signal="pressed" from="Instructions" to="." method="_on_Instructions_pressed"]
+[connection signal="pressed" from="NoticeButton" to="." method="_on_NoticeButton_pressed"]
+[connection signal="pressed" from="Notice/x" to="." method="_on_x_pressed"]

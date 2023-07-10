@@ -1,0 +1,166 @@
+﻿Devlog
+V1.1.0:
+* Added
+   * Level1
+   * Player
+      * Player controls
+      * Jump Height: 4 tiles
+   * Gem (adds one to your Gem Counter)
+   * Gem_But_Better (adds 5 to your Gem Counter)
+   * Platforms
+      * Solid
+      * One-Way (Jump through)
+   * HUD
+      * Gem Counter
+   * Portal (resets level when you go through with all 7 Gems (kinda victory?))
+   * You can die from falling off the world
+V1.2.0:
+* Added
+   * Screens
+      * Title Screen (Plays Main-TitleSoundtrack)
+         * Start button (starts game)
+         * Instructions button (takes you to the Instructions Screen)
+      * Instructions Screen
+         * Start button (starts game)
+         * Title Screen button (takes you to the Title Screen)
+         * Shows basic information about the game
+      * Gameover Screen
+         * Title Screen button (takes you to the Title Screen)
+      * Victory Screen
+         * Title Screen button (takes you to the Title Screen)
+         * Triggered when you go through the portal
+   * Player
+      * Flashes red, plays Damage sound and dies when you hit the side of a Monster
+      * Added sound effect for jumping
+   * Monster
+      * Gives 1 Mana and plays Dissolve animation and Dissolve sound when killed
+   * Gem
+      * Added sound effect for collecting
+   * HUD 
+      * Added Mana Counter
+   * Main-GameplaySoundtrack now plays while in levels
+* Removed:
+   * Gem_But_Better
+V1.2.1:
+* Added:
+   * Screens
+      * Instructions Screen
+         * Added an Identifier for the different game objects (Player, Enemy, Gem, Portal)
+* Fixed:
+   * Gem
+      * Fixed double collect, where you could quickly re-enter the Gem after collecting it, and collect it again
+* Changes:
+   * Music
+      * Scenes no longer play music themselves, they now call from a Music Autoload, stopping the cutting effect in 1.2.0.
+   * Screens
+      * Title Screen
+         * Changed the look of buttons so that they no longer have a background
+      * Instructions Screen
+         * Changed the look of buttons so that they no longer have a background
+      * Gameover Screen
+         * Changed the look of buttons so that they no longer have a background
+      * Victory Screen
+         * Changed the look of buttons so that they no longer have a background
+V1.3.0:
+* Added:
+   * Spells
+      * Fireball [?] fires in the direction you’re facing (requires you to have 2 Mana to cast, uses 1-2 of that Mana)
+   * Platforms
+      * Inverse-One-Way (Drop through)
+   * Ladders
+      * Press [↑] / [↓] to stick to ladder, hold [↑] to go up, hold [↓] to go down
+      * Press [ctrl] to get off
+* Changed:
+   * Monster now gives 3-4 Mana instead of 1
+   * Portal
+      * Texture
+   * Screens
+      * Instructions Screen
+         * Changed Portal identifier texture
+* Fixed:
+   * Menu Screens no longer stick to the top left when fullscreen is enabled, the UI now spreads out over the screen, no matter the screen size.
+V1.4.0:
+* Added:
+   * Spells
+      * Shield [>] you gain a 7 second shield, with a 10 second cooldown from cast time (requires you to have 3 Mana, uses 1-3 of that Mana)
+      * Heal [shift] you regain 1 health, with a 2 second cooldown from cast time (requires you to have 4 Mana, uses 3-4 of that Mana)
+   * Gem_But_Better
+      * Re-added and now adds 3 to Gem Counter if collected instead of the previous 5.
+   * Heathbar:
+      * You now have 3 health before you Gameover, you take one damage from Monsters, and if you fall off the world, you take one damage and the level resets.
+* Changed:
+   * HUD
+      * Moved Mana Counter to beside Gem Counter to make space for the Healthbar
+   * You now emit three Damage Sounds before you Gameover
+   * Spells
+      * Fireball now has a 2 second cooldown from cast time
+V1.4.1:
+* Added:
+   * Spells
+      * Shield now has a progress bar overtop to show the amount of time remaining for the Shield by changing in colour and size.
+* Fixed:
+   * Spells
+      * A glitch with the Shield where if you were to very quickly press [>] twice, it would give you 2 Shields
+V1.4.2:
+* Added:
+   * Monster
+      * Now has a 2hp Heathbar over its head.
+   * HUD
+      * An “HP:” label before your health display.
+   * UI
+      * Mute Button (Mutes Music)
+      * UnMute Button (UnMutes Music)
+   * Screens
+      * Title Screen
+         * A version label
+         * A notice saying: *Notice* The game is best played in fullscreen and it is needed to read all the instructions.
+      * Instructions Screen
+         * Instructions Text: keybinds and explanations for the spells
+         * Instructions Identifiers: Scaled the portal so that the texture is no longer warped
+* Changed:
+   * HUD instead of having rounded corners now is rectangular and has a dark purple border.
+      * Moved over the Healthbar to make space for the “HP:” label.
+   * Spells
+      * Fireball now deals 2 damage to Monsters, insta-killing them.
+      * The Shield’s Duration Bar now has a dark grey background for easier comprehension.
+V1.5.0:
+* Added:
+   * Monster_Big has 4 hp, behaves the same as Monster. Gives 5-6 Mana.
+* Changed:
+   * Screens
+      * Title Screen
+         * Version Label now reads: 1.5.0
+V1.5.1:
+* Changed:
+   * Screens
+      * Title Screen
+         * Version Label now reads: 1.5.1
+* Fixed:
+   * A glitch of some sort, I can’t remember, or tell from my testing
+V1.6.0:
+* Added:
+   * Level 2
+   * Spiketraps
+      * Shoot up when the Player walks on them, freezes the Player until they release the movement keys and deals 1 damage
+   * Fog obscures the area around the Player.
+   * Reddish glow close to the bottom of the world to indicate closeness to it
+* Changed:
+   * Portal in Level 1 now takes you to Level 2
+V1.6.1:
+* Changed:
+   * Portal: you can meet or go over the required gems and mana
+* Fixed:
+   * UI
+      * You couldn’t click the mute/unmute buttons from underneath the fog
+V1.6.2:
+* Added:
+   * Reddish glow close to the bottom of the world now shows in the holes through the world in Level 1
+* Changed:
+   * Fog: color is now darker and shape is more oblong
+* Fixed:
+   * Spells:
+      * Heal could be cast when you were at full health
+      * Monster’s hitbox now damages you from behind
+V1.6.3:
+   * Fixed:
+      * Monster: you couldn’t damage a small monster

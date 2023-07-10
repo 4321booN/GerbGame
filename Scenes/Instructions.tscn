@@ -1,0 +1,214 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Thixel.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/ThixelMedium.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/ThixelMini.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Scripts/Instructions.gd" type="Script" id=4]
+[ext_resource path="res://Art/Textures/World/amethyst_block.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Button-Hovered-Focused.tres" type="StyleBox" id=6]
+[ext_resource path="res://Scenes/Button-Normal-Pressed-Disabled.tres" type="StyleBox" id=7]
+[ext_resource path="res://Art/Textures/World/Gem_But_Better.png" type="Texture" id=8]
+[ext_resource path="res://Art/Textures/Monsters/Monster_Idle.png" type="Texture" id=9]
+[ext_resource path="res://Art/Textures/World/Gem.png" type="Texture" id=10]
+[ext_resource path="res://Art/Textures/Player/Gerbin_Idle_Right.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.25098, 0.231373, 0.47451, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Instructions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 184, -200 )
+script = ExtResource( 4 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 72.0
+color = Color( 0.204548, 0.159817, 0.292969, 1 )
+
+[node name="InstructionsBackground2" type="Panel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.106
+anchor_right = 0.5
+anchor_bottom = 0.106
+margin_left = -392.0
+margin_top = -62.296
+margin_right = 400.576
+margin_bottom = 62.232
+custom_styles/panel = SubResource( 1 )
+
+[node name="Title" type="Label" parent="Background/InstructionsBackground2"]
+anchor_left = 0.505
+anchor_top = 0.506
+anchor_right = 0.505
+anchor_bottom = 0.506
+margin_left = -392.251
+margin_top = -55.0112
+margin_right = 391.749
+margin_bottom = 72.9888
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Instructions"
+align = 1
+
+[node name="Start" type="Button" parent="."]
+anchor_left = 0.047
+anchor_top = 0.253
+anchor_right = 0.047
+anchor_bottom = 0.253
+margin_left = -0.127998
+margin_top = 0.199982
+margin_right = 171.872
+margin_bottom = 64.2
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 7 )
+text = "Start"
+
+[node name="TitleScreen" type="Button" parent="."]
+anchor_left = 0.047
+anchor_top = 0.36
+anchor_right = 0.047
+anchor_bottom = 0.36
+margin_left = -0.127998
+margin_top = -1.52588e-05
+margin_right = 383.872
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 7 )
+text = "Title Screen"
+
+[node name="InstructionsBackground" type="Panel" parent="."]
+anchor_left = 0.437
+anchor_top = 0.607
+anchor_right = 0.437
+anchor_bottom = 0.607
+margin_left = 0.511993
+margin_top = -220.2
+margin_right = 544.512
+margin_bottom = 219.8
+custom_styles/panel = SubResource( 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InstructionsBackground"]
+anchor_left = 0.015
+anchor_top = 0.018
+anchor_right = 0.015
+anchor_bottom = 0.018
+margin_left = -0.16
+margin_top = 0.0799994
+margin_right = 535.84
+margin_bottom = 424.08
+scroll_horizontal_enabled = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InstructionsBackground/ScrollContainer"]
+margin_right = 518.0
+margin_bottom = 592.0
+
+[node name="InstructionsText" type="Label" parent="InstructionsBackground/ScrollContainer/VBoxContainer"]
+margin_right = 518.0
+margin_bottom = 592.0
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Instructions:
+[a] [s] [d] or arrow keys to
+move, [Space] [w] or up to jump.
+
+Enemies will kill you if you
+touch their sides, but if you jump
+on their heads, they will die
+and you will gain mana.
+
+Collect gems and get through
+the portal at the end of the level
+to win!
+
+You hve three spells you can use:
+ - Fireball [/] (Requires 2 Mana)
+ - Sheild [>] (Requires 3 Mana)
+ - Heal [shift] (Requires 4 Mana)"
+
+[node name="IdentifierBackground" type="Panel" parent="."]
+anchor_left = 0.047
+anchor_top = 0.52
+anchor_right = 0.047
+anchor_bottom = 0.52
+margin_left = -24.128
+margin_right = 367.872
+margin_bottom = 344.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="IdentifierText" type="Label" parent="IdentifierBackground"]
+margin_left = 8.0
+margin_top = 16.0
+margin_right = 124.0
+margin_bottom = 293.0
+custom_colors/font_color = Color( 0.352941, 0.388235, 0.427451, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "You:
+
+Enemy:
+
+Gems:
+
+
+Portal:"
+
+[node name="TextureRect" type="TextureRect" parent="IdentifierBackground"]
+margin_left = 88.0
+margin_top = 8.00003
+margin_right = 136.0
+margin_bottom = 56.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="IdentifierBackground"]
+margin_left = 136.0
+margin_top = 80.0
+margin_right = 184.0
+margin_bottom = 128.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="IdentifierBackground"]
+margin_left = 112.0
+margin_top = 152.0
+margin_right = 160.0
+margin_bottom = 200.0
+texture = ExtResource( 10 )
+expand = true
+
+[node name="TextureRect5" type="TextureRect" parent="IdentifierBackground"]
+margin_left = 152.0
+margin_top = 152.0
+margin_right = 200.0
+margin_bottom = 200.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="IdentifierBackground"]
+margin_left = 128.0
+margin_top = 232.0
+margin_right = 176.0
+margin_bottom = 328.0
+texture = ExtResource( 5 )
+expand = true
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="TitleScreen" to="." method="_on_TitleScreen_pressed"]

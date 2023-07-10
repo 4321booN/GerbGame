@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Art/Sound/FX/214050__taira-komori__magic02.wav" type="AudioStream" id=1]
+[ext_resource path="res://Art/Sound/FX/166184__drminky__retro-coin-collect.wav" type="AudioStream" id=2]
+[ext_resource path="res://Art/Textures/HUD/Staff_Powerup_Blast.png" type="Texture" id=3]
+[ext_resource path="res://Art/Textures/Particles/Blast_Powerup_Particle_Small.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Scripts/StaffPowerup.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "blast",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
+
+[node name="StaffPowerup" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2.86102e-06, -2.86102e-06 )
+scale = Vector2( 8, 8 )
+frames = SubResource( 1 )
+animation = "blast"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="R" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -40 )
+amount = 12
+lifetime = 2.0
+lifetime_randomness = 0.01
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 69.2
+direction = Vector2( 90, 90 )
+orbit_velocity = 0.08
+
+[node name="L" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -24 )
+lifetime = 2.0
+lifetime_randomness = 0.01
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 54.49
+direction = Vector2( 90, 90 )
+orbit_velocity = -0.08
+
+[node name="PowerupCollectSoundPT1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = 4.483
+pitch_scale = 0.59
+
+[node name="PowerupCollectSoundPT2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.0
+pitch_scale = 0.77
+
+[connection signal="body_entered" from="." to="." method="_on_StaffPowerup_body_entered"]
